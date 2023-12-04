@@ -49,21 +49,18 @@ function toggleTaskCompletion(task) {
 }
 
 function moveTaskToTop(task) {
-    // fadeIn() tehoste liu'uttaa suorittamattoman tehtävän listan ylimmäiseksi
     task.fadeOut(500, function () {
         $(this).insertBefore($("#list-container").children(".checked").first()).removeAttr("style").fadeIn(500);
     });
 }
 
 function moveTaskToBottom(task) {
-    // fadeIn() tehoste liu'uttaa suoritetun tehtävän listan alimmaiseksi
     task.fadeOut(500, function () {
         $(this).appendTo("#list-container").removeAttr("style").fadeIn(500);
     });
 }
 
 function moveOtherTasksUp() {
-    // hakee suoritetut tehtävät ja liu'uttaa ne ylös
     $(".checked").each(function () {
         $(this).animate({
             opacity: "toggle",
@@ -75,10 +72,8 @@ function moveOtherTasksUp() {
 }
 
 function removeTaskWithAnimation(task) {
-    // fadeIn() tehoste ilman ylimääräisiä animaatioita
     task.fadeOut(500, function () {
         if ($(this).hasClass("checked")) {
-            // Jos tehtävä on suoritettu, liu'uta se suoritettujen tehtävien listan alapuolelle
             $(this).appendTo("#list-container").removeAttr("style").fadeIn(500);
         }
         $(this).remove();
